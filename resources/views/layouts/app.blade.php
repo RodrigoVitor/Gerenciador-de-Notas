@@ -41,6 +41,7 @@
                     <div class="navbar-links">
                         @auth
                             <a href="{{ url('/dashboard') }}" class="">Dashboard</a>
+                            <a href="{{ url('/logout') }}" class="">Logout</a>
                         @else
                             <a href="{{ route('login') }}" class="">Log in</a>
 

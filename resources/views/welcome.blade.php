@@ -9,6 +9,8 @@
     <section class="section">
         <img src="{{ asset('logo.png')}}" alt="logo da nota">
         <h1>Bem vindo ao <span>Gerenciador de Notas</span></h1>
-        <p>Aqui você pode gerenciar suas notas, para fazer isso basta fazer o cadastro</p>
+        @guest
+            <p>Aqui você pode gerenciar suas notas, para fazer isso basta fazer o cadastro <a href="{{route('login')}}">Clicando aqui</a></p>
+        @endguest
     </section>
 @endsection
