@@ -1,0 +1,16 @@
+.section {
+    height: 92vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.section img {
+    width:150px;
+}
+
+.section h1 {
+    font-size: 40px;
+    color:#050505
+}

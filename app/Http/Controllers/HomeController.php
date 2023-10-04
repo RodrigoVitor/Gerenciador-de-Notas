@@ -11,4 +11,8 @@ class HomeController extends Controller
         $user = User::userOwn();
         return view('dashboard', compact('user'));
     }
+
+    public function home() {
+        return view('welcome');
+    }
 }
