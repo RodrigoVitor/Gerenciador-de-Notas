@@ -11,4 +11,9 @@ class NotaController extends Controller
         Note::store($request);
         return redirect()->back();
     }
+
+    public function destroy(Request $request) {
+        Note::destroy($request);
+        return redirect()->back();
+    }
 }

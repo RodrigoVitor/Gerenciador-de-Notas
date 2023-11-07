@@ -42,12 +42,22 @@ form button:hover {
     display: flex;
     background-color: #222;
     justify-content: space-between;
+    align-items: center;
     color:white;
     font-size: 22px;
 }
+.tasks-icons {
+    display:flex;
+}
+.tasks-icons button {
+    border: none; 
+    cursor: pointer;
+    margin:0px;
+}
 
 ion-icon {
-    color:white
+    color:white;
+    font-size: 22px;
 }
 
 .icon-edit:hover {

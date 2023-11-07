@@ -21,8 +21,19 @@
                     {{$item->name}}
                 </div>
                 <div class="tasks-icons">
-                    <a href="#" ><ion-icon class="icon-edit" name="create-outline"></ion-icon></a>
-                    <a href="#" ><ion-icon class="icon-delete" name="trash-outline"></ion-icon></a>
+                    <form method="POST" action="">
+                        @csrf
+                        <button type="submit" style="background-color: transparent;">
+                            <ion-icon class="icon-edit" name="create-outline">
+                        </button>
+                    </form>
+                    <form method="POST" action="{{ route('destroy') }}">
+                        @csrf
+                        <input type="hidden" name="id" value="{{$item->id}}">
+                        <button type="submit" style="background-color: transparent;">
+                            <ion-icon class="icon-delete" name="trash-outline"></ion-icon>
+                        </button>
+                    </form>                    
                 </div>
             </div>
         @endforeach

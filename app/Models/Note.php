@@ -24,4 +24,8 @@ class Note extends Model
             'category' => $request->category
         ]);
     }
+
+    public static function destroy($request) {
+        return self::where('id', $request->id)->delete();
+    }
 }

@@ -21,6 +21,7 @@ Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::post('/store', [NotaController::class, 'store'])->middleware(['auth', 'verified'])->name('create');
+Route::post('/delete', [NotaController::class, 'destroy'])->middleware(['auth', 'verified'])->name('destroy');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
