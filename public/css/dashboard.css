@@ -31,8 +31,8 @@ form button {
     cursor: pointer;
 }
 form button:hover {
-    background-color: #ddd; /* Cor de fundo quando o cursor passa sobre o link */
-    color: black; /* Cor do texto quando o cursor passa sobre o link */
+    background-color: #ddd; 
+    color: black; 
 }
 
 .tasks {
@@ -51,5 +51,8 @@ ion-icon {
 }
 
 .icon-edit:hover {
-    background-color:blue
+    color:blue
+}
+.icon-delete:hover {
+    color: red
 }
