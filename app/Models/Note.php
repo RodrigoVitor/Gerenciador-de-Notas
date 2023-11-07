@@ -28,4 +28,10 @@ class Note extends Model
     public static function destroy($request) {
         return self::where('id', $request->id)->delete();
     }
+
+    public static function edit($request) {
+        return self::where('id', $request->id)->update([
+            'name' => $request->task
+        ]);
+    }
 }

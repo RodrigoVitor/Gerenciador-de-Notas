@@ -46,7 +46,7 @@ form button:hover {
     color:white;
     font-size: 22px;
 }
-.tasks-icons {
+.tasks-icons, .icons-main {
     display:flex;
 }
 .tasks-icons button {
@@ -65,4 +65,7 @@ ion-icon {
 }
 .icon-delete:hover {
     color: red
+}
+.icon-save:hover {
+    color: rgb(39, 39, 192)
 }

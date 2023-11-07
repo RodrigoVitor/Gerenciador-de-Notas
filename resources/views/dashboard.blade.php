@@ -18,22 +18,31 @@
         @foreach ($tasks as $item)
             <div class="tasks">
                 <div class="tasks-title">
-                    {{$item->name}}
+                    <p id="taskName-{{$item->id}}">{{$item->name}}</p>
                 </div>
                 <div class="tasks-icons">
-                    <form method="POST" action="">
+                    <form method="POST" action="{{route('update')}}" style="display:none; margin:auto 50px" id="taskSave-{{$item->id}}">
                         @csrf
-                        <button type="submit" style="background-color: transparent;">
-                            <ion-icon class="icon-edit" name="create-outline">
-                        </button>
-                    </form>
-                    <form method="POST" action="{{ route('destroy') }}">
-                        @csrf
+                        <input type="text" name="task" value="{{$item->name}}">
                         <input type="hidden" name="id" value="{{$item->id}}">
                         <button type="submit" style="background-color: transparent;">
-                            <ion-icon class="icon-delete" name="trash-outline"></ion-icon>
+                            <ion-icon class="icon-save" name="chevron-down-outline"></ion-icon>
                         </button>
-                    </form>                    
+                    </form>
+                    <div class="icons-main" id="icons-main-{{$item->id}}">
+                        <div style="margin:auto">
+                            <a href="#" onclick="edit({{$item->id}})">
+                                <ion-icon class="icon-edit" name="create-outline">
+                            </a>
+                        </div>
+                        <form method="POST" action="{{ route('destroy') }}">
+                            @csrf
+                            <input type="hidden" name="id" value="{{$item->id}}">
+                            <button type="submit" style="background-color: transparent;">
+                                <ion-icon class="icon-delete" name="trash-outline"></ion-icon>
+                            </button>
+                        </form>                    
+                    </div>
                 </div>
             </div>
         @endforeach
@@ -42,6 +51,13 @@
 
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script>
+    function edit(id) {
+        document.getElementById('taskName-'+id).style.display = 'none'
+        document.getElementById('icons-main-'+id).style.display = 'none'
+        document.getElementById('taskSave-'+id).style.display = 'flex'
+    }
+</script>
 
 @endsection
 

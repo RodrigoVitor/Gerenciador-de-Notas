@@ -22,6 +22,7 @@ Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth', 
 
 Route::post('/store', [NotaController::class, 'store'])->middleware(['auth', 'verified'])->name('create');
 Route::post('/delete', [NotaController::class, 'destroy'])->middleware(['auth', 'verified'])->name('destroy');
+Route::post('/update', [NotaController::class, 'update'])->middleware(['auth', 'verified'])->name('update');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
