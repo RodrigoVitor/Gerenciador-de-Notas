@@ -8,12 +8,14 @@
 @section('content')
 <main>
     <h1>Olá {{$user->name}}</h1>
-    <form action="{{ route('create') }}" method="post">
-        @csrf
-        <input type="text" name="task" placeholder="Digite aqui sua nota. Ex: Estudar inglês" required>
-        <input type="hidden" name="category" value="null">
-        <button type="submit">Criar nota</button>
-    </form>
+    <a class="create" href="{{route('create-a-task')}}">Criar uma task</a>
+    <div>
+        <ul id="category">
+            <li><a href="#">todos</a></li>
+            <li><a href="#">casa</a></li>
+            <li><a href="#">faculdade</a></li>
+        </ul>
+    </div>
     <div>
         @foreach ($tasks as $item)
             <div class="tasks">

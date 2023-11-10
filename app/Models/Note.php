@@ -21,7 +21,7 @@ class Note extends Model
         return self::create([
             'name' => $request->task,
             'user_id' => Auth::user()->id,
-            'category' => $request->category
+            'category' => $request->category ?? 'sem categoria'
         ]);
     }
 

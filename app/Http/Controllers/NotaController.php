@@ -7,9 +7,13 @@ use Illuminate\Http\Request;
 
 class NotaController extends Controller
 {
+    public static function create() {
+        return view('create');
+    }
+
     public function store(Request $request) {
         Note::store($request);
-        return redirect()->back();
+        return redirect()->route('dashboard');
     }
 
     public function destroy(Request $request) {
