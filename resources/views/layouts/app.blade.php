@@ -37,16 +37,16 @@
 <body>
     @if (Route::has('login'))
                 <div class="navbar">
-                    <a class="logo" href="{{route('home')}}">Logo</a>
+                    <a class="logo" href="{{route('home')}}"><img width="25" src="{{ asset('logo.png')}}" alt="logo da nota"></a>
                     <div class="navbar-links">
                         @auth
-                            <a href="{{ url('/dashboard') }}" class="">Dashboard</a>
-                            <a href="{{ url('/logout') }}" class="">Logout</a>
+                            <a href="{{ url('/dashboard') }}">Dashboard</a>
+                            <a href="{{ url('/logout') }}">Sair</a>
                         @else
-                            <a href="{{ route('login') }}" class="">Log in</a>
+                            <a href="{{ route('login') }}">Entrar</a>
 
                             @if (Route::has('register'))
-                                <a href="{{ route('register') }}" class="">Register</a>
+                                <a href="{{ route('register') }}">Cadastrar-se</a>
                             @endif
                         @endauth
                     </div>
