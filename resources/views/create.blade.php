@@ -17,11 +17,12 @@
     }
 
     form input {
-        height: 30px;
+        height: 40px;
         width: 480px;
         display: flex;
         font-size: 20px;
         padding: 10px;
+        margin: 0 0 20px 0
     }
 
     form button {
