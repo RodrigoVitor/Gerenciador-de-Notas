@@ -30,12 +30,15 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $user = User::store($request->name, $request->email, $request->password);
-
-        event(new Registered($user));
-
-        Auth::login($user);
-
-        return redirect(RouteServiceProvider::HOME);
+        $findUser = User::findUserByEmail($request->email);
+        if ($findUser == 0) {
+            $user = User::store($request->name, $request->email, $request->password);
+            event(new Registered($user));
+    
+            Auth::login($user);
+    
+            return redirect(RouteServiceProvider::HOME);
+        }
+        return redirect()->route('register-user')->with('message', 'E-mail já registrado.');
     }
 }

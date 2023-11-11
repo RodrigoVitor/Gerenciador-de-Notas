@@ -44,6 +44,10 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    public static function findUserByEmail($email) {
+        return self::where('email', $email)->count();
+    }
+
     public static function store($name, $email, $password) {
         return self::create([
             'name' => $name,
