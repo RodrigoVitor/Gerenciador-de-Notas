@@ -11,43 +11,88 @@
     <a class="create" href="{{route('create-a-task')}}">Criar uma task</a>
     <div>
         <ul id="category">
-            <li><a href="#">todos</a></li>
-            <li><a href="#">casa</a></li>
-            <li><a href="#">faculdade</a></li>
+            @if (!empty($category))
+            <li><a href="?category=todos">Todos</a></li>
+            @foreach ($category as $item)
+                    @if ($item != 'sem categoria')
+                        <li><a href="?category={{$item}}">{{ucfirst($item)}}</a></li>
+                    @endif
+                @endforeach
+            @endif
         </ul>
     </div>
     <div>
-        @foreach ($tasks as $item)
-            <div class="tasks">
-                <div class="tasks-title">
-                    <p id="taskName-{{$item->id}}">{{$item->name}}</p>
-                </div>
-                <div class="tasks-icons">
-                    <form method="POST" action="{{route('update')}}" style="display:none; margin:auto 50px" id="taskSave-{{$item->id}}">
-                        @csrf
-                        <input type="text" name="task" value="{{$item->name}}">
-                        <input type="hidden" name="id" value="{{$item->id}}">
-                        <button type="submit" style="background-color: transparent;">
-                            <ion-icon class="icon-save" name="chevron-down-outline"></ion-icon>
-                        </button>
-                    </form>
-                    <div class="icons-main" id="icons-main-{{$item->id}}">
-                        <div style="margin:auto">
-                            <a href="#" onclick="edit({{$item->id}})">
-                                <ion-icon class="icon-edit" name="create-outline">
-                            </a>
-                        </div>
-                        <form method="POST" action="{{ route('destroy') }}">
+        @if (!$cat || $cat == 'todos')
+            @foreach ($tasks as $item)
+                <div class="tasks">
+                    <div class="tasks-title">
+                        <p id="taskName-{{$item->id}}">{{$item->name}}</p>
+                    </div>
+                    <div class="tasks-icons">
+                        <form method="POST" action="{{route('update')}}" class="form-edit-task" id="taskSave-{{$item->id}}">
                             @csrf
+                            <input type="text" name="task" value="{{$item->name}}">
+                            <input type="text" name="category" value="{{$item->category}}">
                             <input type="hidden" name="id" value="{{$item->id}}">
                             <button type="submit" style="background-color: transparent;">
-                                <ion-icon class="icon-delete" name="trash-outline"></ion-icon>
+                                <ion-icon class="icon-save" name="chevron-down-outline"></ion-icon>
                             </button>
-                        </form>                    
+                        </form>
+                        <div class="icons-main" id="icons-main-{{$item->id}}">
+                            <div style="margin:auto">
+                                <a href="#" onclick="edit({{$item->id}})">
+                                    <ion-icon class="icon-edit" name="create-outline">
+                                </a>
+                            </div>
+                            <form method="POST" action="{{ route('destroy') }}">
+                                @csrf
+                                <input type="hidden" name="id" value="{{$item->id}}">
+                                <button type="submit" style="background-color: transparent;">
+                                    <ion-icon class="icon-delete" name="trash-outline"></ion-icon>
+                                </button>
+                            </form>                    
+                        </div>
                     </div>
                 </div>
-            </div>
-        @endforeach
+            @endforeach
+        @endif
+
+        @if ($cat)
+            @foreach ($tasks as $item)
+                @if ($item->category == $cat)
+                <div class="tasks">
+                    <div class="tasks-title">
+                        <p id="taskName-{{$item->id}}">{{$item->name}}</p>
+                    </div>
+                    <div class="tasks-icons">
+                        <form method="POST" action="{{route('update')}}" class="form-edit-task" id="taskSave-{{$item->id}}">
+                            @csrf
+                            <input type="text" name="task" value="{{$item->name}}">
+                            <input type="text" name="category" value="{{$item->category}}">
+                            <input type="hidden" name="id" value="{{$item->id}}">
+                            <button type="submit" style="background-color: transparent;">
+                                <ion-icon class="icon-save" name="chevron-down-outline"></ion-icon>
+                            </button>
+                        </form>
+                        <div class="icons-main" id="icons-main-{{$item->id}}">
+                            <div style="margin:auto">
+                                <a href="#" onclick="edit({{$item->id}})">
+                                    <ion-icon class="icon-edit" name="create-outline">
+                                </a>
+                            </div>
+                            <form method="POST" action="{{ route('destroy') }}">
+                                @csrf
+                                <input type="hidden" name="id" value="{{$item->id}}">
+                                <button type="submit" style="background-color: transparent;">
+                                    <ion-icon class="icon-delete" name="trash-outline"></ion-icon>
+                                </button>
+                            </form>                    
+                        </div>
+                    </div>
+                </div>
+                @endif
+            @endforeach
+        @endif
     </div>
 </main>
 

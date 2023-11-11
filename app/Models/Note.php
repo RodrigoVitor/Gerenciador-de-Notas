@@ -19,9 +19,9 @@ class Note extends Model
 
     public static function store($request) {
         return self::create([
-            'name' => $request->task,
+            'name' => strtolower($request->task),
             'user_id' => Auth::user()->id,
-            'category' => $request->category ?? 'sem categoria'
+            'category' => strtolower($request->category) ?? 'sem categoria'
         ]);
     }
 
@@ -31,7 +31,8 @@ class Note extends Model
 
     public static function edit($request) {
         return self::where('id', $request->id)->update([
-            'name' => $request->task
+            'name' => $request->task,
+            'category' => $request->category
         ]);
     }
 }

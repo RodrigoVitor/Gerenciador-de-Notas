@@ -23,6 +23,6 @@ class NotaController extends Controller
 
     public function update(Request $request) {
         Note::edit($request);
-        return redirect()->back();
+        return redirect()->route('dashboard');
     }
 }

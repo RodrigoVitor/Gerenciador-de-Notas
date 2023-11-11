@@ -24,7 +24,7 @@ h1 {
 }
 #category li a {
     text-decoration: none;
-    color:black
+    color:black;
 }
 
 #category li a:hover {
@@ -50,6 +50,19 @@ h1 {
     border: none; 
     cursor: pointer;
     margin:0px;
+}
+.form-edit-task {
+    margin: 0 150px 0 0px;
+    display:flex;
+    gap: 20px;
+    display: none;
+}
+.form-edit-task input {
+    height: 34px;
+    padding: 5px;
+}
+.form-edit-task button {
+    float: right;
 }
 
 ion-icon {
