@@ -18,6 +18,11 @@
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
             </div>
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    <span class="error">{{ $error }}</span>
+                @endforeach
+            @endif
             <button type="submit">Entrar</button>
             <a href="{{route('register')}}">Não possui conta? Fazer meu cadastro</a>
         </form>
