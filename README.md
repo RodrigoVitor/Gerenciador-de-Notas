@@ -8,4 +8,6 @@
 3. Adição, edição e exclusão de notas individuais.
 4. Criação de categorias para organizar as notas.
 5. Associação de notas a categorias específicas.
-6. Listagem de notas por categoria. 
+6. Listagem de notas por categoria.
+
+Link do video: https://www.linkedin.com/feed/update/urn:li:activity:7136066488959913984/
