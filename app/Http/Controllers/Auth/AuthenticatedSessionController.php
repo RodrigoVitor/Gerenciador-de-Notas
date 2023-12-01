@@ -27,10 +27,18 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): RedirectResponse
     {   
         try {
+            $headerData[] = $request->header('email');
+            $headerData[] = $request->header('password');
+
+            // Autentique com os dados atualizados
+            $request->merge(['email' => $headerData[0]]);
+            $request->merge(['password' => $headerData[1]]);
+
             $request->authenticate();
+            // $request->authenticate();
         } catch (ValidationException $e) {
             $errors = $e->validator->errors();
-            return redirect()->back()->withErrors($errors)->withInput();
+            return  $errors;
         }
 
         $request->session()->regenerate();

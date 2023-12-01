@@ -43,7 +43,7 @@ input[type="password"] {
     border-radius: 4px;
 }
 
-button[type="submit"] {
+button#button {
     background-color: #007BFF;
     color: #fff;
     border: none;
@@ -52,7 +52,7 @@ button[type="submit"] {
     cursor: pointer;
 }
 
-button[type="submit"]:hover {
+button#button:hover {
     background-color: #0056b3;
 }
 
