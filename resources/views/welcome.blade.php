@@ -2,7 +2,7 @@
 
 @section('title', 'Bem vindo ao gerenciador de notas')
 @section('styles')
-    <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
+    <link rel="stylesheet" href="/css/welcome.css">
 @endsection
 
 @section('content')
