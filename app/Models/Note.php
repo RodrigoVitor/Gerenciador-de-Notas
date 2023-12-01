@@ -31,8 +31,8 @@ class Note extends Model
 
     public static function edit($request) {
         return self::where('id', $request->id)->update([
-            'name' => $request->task,
-            'category' => $request->category
+            'name' => strtolower($request->task),
+            'category' => strtolower($request->category)
         ]);
     }
 }
