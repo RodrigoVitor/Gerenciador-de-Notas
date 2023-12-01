@@ -2,7 +2,7 @@
 
 @section('title', 'Cadastrar')
 @section('styles')
-    <link rel="stylesheet" href="{{ asset('css/loginAndRegister.css') }}">
+    <link rel="stylesheet" href="/css/loginAndRegister.css">
 @endsection
     
 @section('content')
